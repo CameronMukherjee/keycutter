@@ -1,0 +1,56 @@
+micronaut:
+  server:
+    port: ${KC_PORT:7314}
+    cors:
+      enabled: true
+      configurations:
+        web:
+          allowedOrigins:
+            - https://XDXDXDASDA.com:6060
+  application:
+    name: kc
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+  security:
+    authentication: bearer
+    endpoints:
+      login:
+        enabled: true
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: '"${JWT_GENERATOR_SECRET:pleaseChangeThisSecretForANewOne}"'
+        bearer:
+          enabled: true
+        enabled: true
+    reject-not-found: true
+    ip-patterns: 0.0.0.0
+    intercept-url-map:
+      - pattern: /swagger/*
+        httpMethod: GET
+        access:
+          - isAnonymous()
+datasources:
+  default:
+    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DATABASE:kc}
+    username: '${PG_USERNAME:postgres}'
+    password: '${PG_PASSWORD:SECURE_PASSWORD}'
+    schema-generate: none
+    dialect: POSTGRES
+    driverClassName: org.postgresql.Driver
+flyway:
+  datasources:
+    default:
+      enabled: true
+kc:
+  ui:
+    username: '${KC_UI_ADMIN_USERNAME:operations}'
+    password: '${KC_UI_ADMIN_PASSWORD:operations}'
