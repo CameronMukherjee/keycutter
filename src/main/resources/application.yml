@@ -1,12 +1,6 @@
 micronaut:
   server:
     port: ${KC_PORT:7314}
-    cors:
-      enabled: true
-      configurations:
-        web:
-          allowedOrigins:
-            - https://XDXDXDASDA.com:6060
   application:
     name: kc
   router:
@@ -31,18 +25,12 @@ micronaut:
         bearer:
           enabled: true
         enabled: true
-    reject-not-found: true
-    ip-patterns: 0.0.0.0
-    intercept-url-map:
-      - pattern: /swagger/*
-        httpMethod: GET
-        access:
-          - isAnonymous()
+    reject-not-found: false
 datasources:
   default:
     url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DATABASE:kc}
-    username: '${PG_USERNAME:postgres}'
-    password: '${PG_PASSWORD:SECURE_PASSWORD}'
+    username: ${PG_USERNAME:postgres}
+    password: ${PG_PASSWORD:SECURE_PASSWORD}
     schema-generate: none
     dialect: POSTGRES
     driverClassName: org.postgresql.Driver
@@ -52,5 +40,5 @@ flyway:
       enabled: true
 kc:
   ui:
-    username: '${KC_UI_ADMIN_USERNAME:operations}'
-    password: '${KC_UI_ADMIN_PASSWORD:operations}'
+    username: ${KC_UI_ADMIN_USERNAME:operations}
+    password: ${KC_UI_ADMIN_PASSWORD:operations}
