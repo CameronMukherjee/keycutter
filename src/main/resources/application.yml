@@ -38,7 +38,14 @@ flyway:
   datasources:
     default:
       enabled: true
+aws:
+  region: ${AWS_REGION:eu-west-2}
+  accessKeyId: ${AWS_ACCESS_KEY_ID}
+  secretKey: ${AWS_SECRET_KEY}
 kc:
+  email:
+    provider: ses
+    sender: ${KC_EMAIL_SENDER}
   ui:
     username: ${KC_UI_ADMIN_USERNAME:operations}
     password: ${KC_UI_ADMIN_PASSWORD:operations}
