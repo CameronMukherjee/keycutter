@@ -43,6 +43,8 @@ aws:
   accessKeyId: ${AWS_ACCESS_KEY_ID}
   secretKey: ${AWS_SECRET_KEY}
 kc:
+  #  env: ${KC_ENV:local}
+  env: prod
   email:
     provider: ses
     sender: ${KC_EMAIL_SENDER}

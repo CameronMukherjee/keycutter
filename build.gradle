@@ -25,6 +25,7 @@ dependencies {
     implementation('commons-logging:commons-logging:1.2')
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut.reactor:micronaut-reactor")
