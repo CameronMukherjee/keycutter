@@ -5,7 +5,7 @@ plugins {
     id 'io.micronaut.graalvm' version '3.4.0'
 }
 
-version = "0.2"
+version = "0.3"
 group = "com.hexploits.kc"
 
 repositories {
