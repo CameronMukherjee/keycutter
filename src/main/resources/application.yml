@@ -51,3 +51,10 @@ kc:
   ui:
     username: ${KC_UI_ADMIN_USERNAME:operations}
     password: ${KC_UI_ADMIN_PASSWORD:operations}
+  logs:
+    login:
+      period: 1
+      strategy: delete
+    events:
+      period: 1
+      strategy: delete
