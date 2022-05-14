@@ -1,4 +1,4 @@
-# KC - KayCey
+# KC - KeyCutter
 
 Generate JWTs and authenticate your users with this side-car deployable service.
 
