@@ -1,12 +1,11 @@
-package com.hexploits.kc.dto.request;
+package model;
 
-import com.hexploits.kc.dto.response.EventType;
 import io.micronaut.core.annotation.Introspected;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Introspected
-public class EmitWebhookRequest {
+public class WebhookBody {
 
   private final UUID userUid;
 
@@ -18,7 +17,7 @@ public class EmitWebhookRequest {
 
   private final OffsetDateTime sentAt;
 
-  public EmitWebhookRequest(UUID userUid, String externalReference, EventType eventType, String message,
+  public WebhookBody(UUID userUid, String externalReference, EventType eventType, String message,
     OffsetDateTime sentAt) {
     this.userUid = userUid;
     this.externalReference = externalReference;

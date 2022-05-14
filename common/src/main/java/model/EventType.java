@@ -1,4 +1,4 @@
-package com.hexploits.kc.dto.response;
+package model;
 
 public enum EventType {
   USER_CREATED("A new user was added to the system."),
