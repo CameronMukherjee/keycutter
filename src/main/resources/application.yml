@@ -39,13 +39,13 @@ flyway:
     default:
       enabled: true
 aws:
-  region: ${AWS_REGION:eu-west-2}
+  region: ${AWS_REGION}
   accessKeyId: ${AWS_ACCESS_KEY_ID}
   secretKey: ${AWS_SECRET_KEY}
   bucket: ${AWS_S3_BUCKET:keycutter}
 kc:
-  #  env: ${KC_ENV:local}
-  env: local
+  env: ${KC_ENV:local}
+  #  env: local
   email:
     provider: ${KC_EMAIL_PROVIDER:ses}
     sender: ${KC_EMAIL_SENDER}
@@ -54,8 +54,8 @@ kc:
     password: ${KC_UI_ADMIN_PASSWORD:operations}
   logs:
     login:
-      period: 1
-      strategy: s3
+      period: ${KC_LOGS_EVENTS_PERIOD:5000}
+      strategy: ${KC_LOGS_LOGIN_STRATEGY:none}
     events:
-      period: 1
-      strategy: s3
+      period: ${KC_LOGS_EVENTS_PERIOD:5000}
+      strategy: ${KC_LOGS_EVENTS_STRATEGY:none}
