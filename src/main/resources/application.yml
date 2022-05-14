@@ -42,11 +42,12 @@ aws:
   region: ${AWS_REGION:eu-west-2}
   accessKeyId: ${AWS_ACCESS_KEY_ID}
   secretKey: ${AWS_SECRET_KEY}
+  bucket: ${AWS_S3_BUCKET:keycutter}
 kc:
   #  env: ${KC_ENV:local}
-  env: prod
+  env: local
   email:
-    provider: ses
+    provider: ${KC_EMAIL_PROVIDER:ses}
     sender: ${KC_EMAIL_SENDER}
   ui:
     username: ${KC_UI_ADMIN_USERNAME:operations}
@@ -54,7 +55,7 @@ kc:
   logs:
     login:
       period: 1
-      strategy: delete
+      strategy: s3
     events:
       period: 1
-      strategy: delete
+      strategy: s3
