@@ -29,6 +29,7 @@ services:
       - PG_DATABASE=keycutter
       - PG_USERNAME=keycutter
       - PG_PASSWORD=SECURE_PASSWORD
+      - JWT_GENERATOR_SECRET=YOUR_SECURE_SECRET
 
   database:
     restart: always
