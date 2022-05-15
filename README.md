@@ -15,6 +15,96 @@ authentication.
 - KeyCutter has native bindings in Java, C#, Go and Typescript.
 - Interface via REST (hexploits.stoplight.io) or native bindings (Java, C#, Go and Typescript).
 
+# Getting Started:
+
+**Docker container is available
+at: [https://hub.docker.com/r/hexploits/keycutter](https://hub.docker.com/r/hexploits/keycutter)**
+
+The easiest way to get started with KeyCutter would be utilising Docker to run the container image. This can be done in
+a standalone environment or via docker-compose (which is what we recommend more).
+
+### **Standalone Container Example:**
+
+```bash
+docker run --name keycutter -p 7314:7314 \
+-e KC_ENV=prod \
+-e KC_EMAIL_SENDER=info@hexploits.com \
+-e KC_EMAIL_PROVIDER=SES \
+-e KC_LOGS_LOGIN_STRATEGY=delete \
+-e KC_LOGS_LOGIN_PERIOD=14 \
+-e KC_LOGS_EVENTS_STRATEGY=s3 \
+-e KC_LOGS_EVENTS_PERIOD=30 \
+-e AWS_REGION=eu-west-2 \
+-e AWS_ACCESS_KEY_ID=3x4mpl3_k3y \
+-e AWS_SECRET_KEY=3x4mple3_s3cr3t_k3y \
+-e AWS_S3_BUCKET=keycutter \
+-e PG_HOST=127.0.0.1 \
+-e PG_PORT=5432 \
+-e PG_DATABASE=keycutter \
+-e PG_USERNAME=myusername \
+-e PG_PASSWORD=MY_SECURE_PASSWORD \
+-e JWT_GENERATOR_SECRET=MY_SUPER_SECRET_PASSWORD \
+hexploits/keycutter:main
+```
+
+### **Docker Compose Example:**
+
+**Can also be found here: [docker-compose.yaml](https://github.com/hexploits/KC/blob/main/docker-compose.yml)**
+
+```yaml
+version: "3.9"
+services:
+  keycutter:
+    restart: always
+    image: "hexploits/keycutter"
+    networks:
+      - keycutter-network
+    ports:
+      - "7314:7314"
+    depends_on:
+      - database
+    environment:
+      - KC_PORT=7314
+      - KC_ENV=prod
+      - KC_EMAIL_PROVIDER=ses
+      - KC_EMAIL_SENDER=info@hexploits.com
+      - KC_UI_ADMIN_USERNAME=operations
+      - KC_UI_ADMIN_PASSWORD=operations
+      - KC_LOGS_LOGIN_PERIOD=365
+      - KC_LOGS_LOGIN_STRATEGY=delete
+      - KC_LOGS_EVENTS_PERIOD=365
+      - KC_LOGS_EVENTS=STRATEGY=delete
+      - AWS_REGION=eu-west-2
+      - AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+      - AWS_SECRET_KEY=YOUR_SECRET
+      - AWS_S3_BUCKET=keycutter
+      - PG_HOST=database
+      - PG_PORT=5432
+      - PG_DATABASE=keycutter
+      - PG_USERNAME=keycutter
+      - PG_PASSWORD=SECURE_PASSWORD
+      - JWT_GENERATOR_SECRET=YOUR_SECURE_SECRET
+
+  database:
+    restart: always
+    image: "postgres"
+    networks:
+      - keycutter-network
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=keycutter
+      - POSTGRES_DB=keycutter
+      - POSTGRES_PASSWORD=SECURE_PASSWORD
+
+networks:
+  keycutter-network:
+    driver: bridge
+```
+
+To start using KeyCutter, include your service in the compose file and ensure they’re on the same network. In this case
+the network is called ‘keycutter-network’.
+
 # KeyCutter Environment Variables:
 
 | Key                     | Description                                                                       | Default Value   | Options                                                    |

@@ -2,7 +2,7 @@ version: "3.9"
 services:
   keycutter:
     restart: always
-    image: "hexploits/keycutter:main"
+    image: "hexploits/keycutter"
     networks:
       - keycutter-network
     ports:
@@ -21,8 +21,8 @@ services:
       - KC_LOGS_EVENTS_PERIOD=365
       - KC_LOGS_EVENTS=STRATEGY=delete
       - AWS_REGION=eu-west-2
-      - AWS_ACCESS_KEY_ID=
-      - AWS_SECRET_KEY=
+      - AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+      - AWS_SECRET_KEY=YOUR_SECRET
       - AWS_S3_BUCKET=keycutter
       - PG_HOST=database
       - PG_PORT=5432
