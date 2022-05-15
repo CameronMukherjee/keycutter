@@ -49,13 +49,13 @@ authentication.
 
 ### KC_LOGS_*_STRATEGY:
 
-| Option | Description                                                                           |
-|--------|---------------------------------------------------------------------------------------|
-| none   | Do nothing when the KC_LOGS_EVENTS_PERIOD is met.                                     |
-| delete | Delete logs that have existed for longer than KC_LOGS_EVENTS_PERIOD days.             |
-| s3     | Archive logs to AWS S3 that have existed for longer than KC_LOGS_EVENTS_PERIOD` days. |
+| Option | Description                                                                      |
+|--------|----------------------------------------------------------------------------------|
+| none   | Do nothing when the KC_LOGS_*_PERIOD is met.                                     |
+| delete | Delete logs that have existed for longer than KC_LOGS_*_PERIOD days.             |
+| s3     | Archive logs to AWS S3 that have existed for longer than KC_LOGS_*_PERIOD` days. |
 
 ### KC_EMAIL_SENDER:
 
-If KC_EMAIL_PROVIDER has been set ensure the email address provided here is setup correctly with the provider. If the
+If KC_EMAIL_PROVIDER has been set ensure the email address provided here is set up correctly with the provider. If the
 email is not authorised errors will occur at runtime.
