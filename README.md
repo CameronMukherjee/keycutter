@@ -49,11 +49,11 @@ authentication.
 
 ### KC_LOGS_*_STRATEGY:
 
-| Option | Description                                                                      |
-|--------|----------------------------------------------------------------------------------|
-| none   | Do nothing when the KC_LOGS_*_PERIOD is met.                                     |
-| delete | Delete logs that have existed for longer than KC_LOGS_*_PERIOD days.             |
-| s3     | Archive logs to AWS S3 that have existed for longer than KC_LOGS_*_PERIOD` days. |
+| Option | Description                                                                     |
+|--------|---------------------------------------------------------------------------------|
+| none   | Do nothing when the KC_LOGS_*_PERIOD is met.                                    |
+| delete | Delete logs that have existed for longer than KC_LOGS_*_PERIOD days.            |
+| s3     | Archive logs to AWS S3 that have existed for longer than KC_LOGS_*_PERIOD days. |
 
 ### KC_EMAIL_SENDER:
 
