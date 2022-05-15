@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   keycutter:
-    #    restart: always
+    restart: always
     image: "keycutter:latest"
     networks:
       - keycutter-network
