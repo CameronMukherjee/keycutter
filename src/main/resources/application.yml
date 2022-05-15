@@ -2,7 +2,7 @@ micronaut:
   server:
     port: ${KC_PORT:7314}
   application:
-    name: kc
+    name: keycutter
   router:
     static-resources:
       swagger:

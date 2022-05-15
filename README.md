@@ -11,7 +11,8 @@ authentication.
 - Web-hook triggers for events.
 - Retention periods for logs including deleting or archiving to AWS S3.
 - KeyCutter has native bindings in Java, C#, Go and Typescript.
-- Interface via REST (hexploits.stoplight.io) or native bindings (Java, C#, Go and Typescript).
+- Interface via REST ([https://hexploits.stoplight.io](https://hexploits.stoplight.io/docs/KeyCutter/)) or native
+  bindings (Java, C#, Go and Typescript).
 
 # Getting Started:
 
@@ -47,7 +48,8 @@ hexploits/keycutter:main
 
 ### **Docker Compose Example:**
 
-**Can also be found here: [docker-compose.yaml](https://github.com/hexploits/KC/blob/main/docker-compose.yml)**
+**Can also be found
+here: [https://github.com/hexploits/KC/blob/main/docker-compose.yml](https://github.com/hexploits/KC/blob/main/docker-compose.yml)**
 
 ```yaml
 version: "3.9"
