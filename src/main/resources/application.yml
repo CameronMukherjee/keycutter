@@ -21,7 +21,7 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: '"${JWT_GENERATOR_SECRET:pleaseChangeThisSecretForANewOne}"'
+              secret: '"${JWT_GENERATOR_SECRET:SECURE_PASSWORD}"'
         bearer:
           enabled: true
         enabled: true
@@ -33,7 +33,7 @@ micronaut:
       expire-after-write: 1m
 datasources:
   default:
-    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DATABASE:kc}
+    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DATABASE:keycutter}
     username: ${PG_USERNAME:postgres}
     password: ${PG_PASSWORD:SECURE_PASSWORD}
     schema-generate: none
