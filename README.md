@@ -1,5 +1,3 @@
-# KeyCutter Docs:
-
 # What is KeyCutter?
 
 Key cutter is a side-car deployable authentication service. It works in conjunction with your pre-existing services.
@@ -21,7 +19,7 @@ authentication.
 at: [https://hub.docker.com/r/hexploits/keycutter](https://hub.docker.com/r/hexploits/keycutter)**
 
 The easiest way to get started with KeyCutter would be utilising Docker to run the container image. This can be done in
-a standalone environment or via docker-compose (which is what we recommend more).
+a standalone environment or via docker-compose (which is what we recommend).
 
 ### **Standalone Container Example:**
 
