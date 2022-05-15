@@ -3,8 +3,6 @@ name: Build Image
 on:
   push:
     branches: [ main ]
-    tags:
-      - 'v*.*.*'
   pull_request:
     branches: [ main ]
 
@@ -32,19 +30,26 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Extract metadata for Docker
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        with:
-          images: hexploits/keycutter
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      - name: Build and push
+        uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: hexploits/keycutter:latest
+
+#      - name: Extract metadata for Docker
+#        id: meta
+#        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+#        with:
+#          images: hexploits/keycutter
+#
+#      - name: Build and push Docker image
+#        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+#        with:
+#          context: .
+#          push: true
+#          tags: ${{ steps.meta.outputs.tags }}
+#          labels: ${{ steps.meta.outputs.labels }}
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
