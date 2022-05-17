@@ -18,10 +18,13 @@ micronaut:
         enabled: true
     token:
       jwt:
+        generator:
+          access-token:
+            expiration: ${JWT_TOKEN_EXPIRATION:86400}
         signatures:
           secret:
             generator:
-              secret: '"${JWT_GENERATOR_SECRET:SECURE_PASSWORD}"'
+              secret: '"${JWT_TOKEN_SECRET:SUPER_SECURE_PASSWORD_THAT_WILL_NEVER_BE_HACKED}"'
         bearer:
           enabled: true
         enabled: true
