@@ -26,7 +26,7 @@ a standalone environment or via docker-compose (which is what we recommend).
 docker run --name keycutter -p 7314:7314 \
 -e KC_ENV=prod \
 -e KC_EMAIL_SENDER=info@hexploits.com \
--e KC_EMAIL_PROVIDER=SES \
+-e KC_EMAIL_PROVIDER=ses \
 -e KC_LOGS_LOGIN_STRATEGY=delete \
 -e KC_LOGS_LOGIN_PERIOD=14 \
 -e KC_LOGS_EVENTS_STRATEGY=s3 \
