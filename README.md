@@ -115,7 +115,7 @@ If you’re trying to get the most out of key cutter we really advise you do the
 3. Ensure your AWS SES instance is in a production environment and not sandbox (might require filling out a form on the
    AWS SES dashboard).
 4. An example of the environment variables you would want to pass into the system could be:
-    1. AWS_REGION_eu-west-2
+    1. AWS_REGION=eu-west-2
     2. AWS_ACCESS_KEY_ID=xxxxxxxxxx
     3. AWS_SECRET_KEY=xxxxxxxxx
     4. KC_EMAIL_PROVIDER=ses
