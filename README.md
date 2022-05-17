@@ -1,18 +1,16 @@
 # What is KeyCutter?
 
 Key cutter is a side-car deployable authentication service. It works in conjunction with your pre-existing services.
-KeyCutter dispatches RBAC compliant JSON web tokens, allowing you to focus on developing features and not
-authentication.
+KeyCutter dispatches RBAC enabled JSON web tokens, allowing you to focus on developing features and not authentication.
 
 # Key Features:
 
-- System and user management via UI.
+- System and user management via UI - coming soon.
 - Email triggers for new users and password resets, email templates are customisable.
 - Web-hook triggers for events.
 - Retention periods for logs including deleting or archiving to AWS S3.
-- KeyCutter has native bindings in Java, C#, Go and Typescript.
 - Interface via REST ([https://hexploits.stoplight.io](https://hexploits.stoplight.io/docs/KeyCutter/)) or native
-  bindings (Java, C#, Go and Typescript).
+  bindings (Java, C#, Go and Typescript) - coming soon.
 
 # Getting Started:
 
@@ -104,6 +102,45 @@ networks:
 
 To start using KeyCutter, include your service in the compose file and ensure they’re on the same network. In this case
 the network is called ‘keycutter-network’.
+
+# Getting the most out of KeyCutter:
+
+If you’re trying to get the most out of key cutter we really advise you do the following:
+
+### Email - AWS SES Integration:
+
+1. Create an IAM user with programmatic access via AWS and provide the access key and secret access key to the
+   configuration. Ensure this key has policies for AWS SES.
+2. Ensure you have a valid email connected to AWS SES - might require clicking on a URL in your inbox.
+3. Ensure your AWS SES instance is in a production environment and not sandbox (might require filling out a form on the
+   AWS SES dashboard).
+4. An example of the environment variables you would want to pass into the system could be:
+    1. AWS_REGION_eu-west-2
+    2. AWS_ACCESS_KEY_ID=xxxxxxxxxx
+    3. AWS_SECRET_KEY=xxxxxxxxx
+    4. KC_EMAIL_PROVIDER=ses
+    5. KC_EMAIL_SENDER=yourSesVerifiedEmail@example.com
+
+### Log Retention - AWS S3 Integration:
+
+1. Create an IAM user with programmatic access via AWS and provide the access key and secret access key to the
+   configuration. Ensure this key has policies for AWS S3.
+2. Ensure you have created a bucket for KeyCutter to store logs in, KeyCutter expects this to be ‘keycutter’ by default
+   however this can be changed via the environment variables.
+3. An example of the environment variables you would want to pass into the system could be:
+    1. AWS_REGION_eu-west-2
+    2. AWS_ACCESS_KEY_ID=xxxxxxxxxx
+    3. AWS_SECRET_KEY=xxxxxxxxx
+    4. AWS_S3_BUCKET=keycutter
+    5. KC_LOGS_EVENTS_PERIOD=30
+    6. KC_LOGS_EVENTS_STRATEGY=s3
+    7. KC_LOGS_LOGIN_PERIOD=30
+    8. KC_LOGS_LOGIN_STRATEGY=s3
+
+In this example you can see that for both event logs and login logs we want to archive them to S3 after 30 days, as you
+can see these can be independently adjusted for your need. If you would like to keep them within the system replace ‘s3’
+with ‘none’, if you would like to delete them instead simply replace 's3’ with ‘delete’. More documentation about this
+feature can be found near the bottom of this doc.
 
 # KeyCutter Environment Variables:
 
