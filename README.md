@@ -82,6 +82,7 @@ services:
       - PG_USERNAME=keycutter
       - PG_PASSWORD=SECURE_PASSWORD
       - JWT_GENERATOR_SECRET=YOUR_SECURE_SECRET
+      -JWT_TOKEN_EXPIRATION=86400
 
   database:
     restart: always
