@@ -107,29 +107,29 @@ the network is called ‘keycutter-network’.
 
 # KeyCutter Environment Variables:
 
-| Key                     | Description                                                                       | Default Value                                   | Options                                                    |
-|-------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------|------------------------------------------------------------|
-| KC_PORT                 | The service port                                                                  | 7314                                            | Integer                                                    |
-| KC_ENV                  | The environment of the system.                                                    | local                                           | local / prod                                               |
-| KC_EMAIL_PROVIDER       | The email provider.                                                               | none                                            | none / ses                                                 |
-| KC_EMAIL_SENDER         | The email address that will be used when sending emails.                          | none                                            | Email address                                              |
-| KC_UI_ADMIN_USERNAME    | The username to login to the admin dashboard                                      | operations                                      | String                                                     |
-| KC_UI_ADMIN_PASSWORD    | The password to login to the admin dashboard                                      | operations                                      | String                                                     |
-| KC_LOGS_LOGIN_PERIOD    | How long should login logs stay in the system?                                    | 365                                             | Integer value                                              |
-| KC_LOGS_LOGIN_STRATEGY  | What should be done once login logs surpass the amount of retention days?         | none                                            | none / delete / s3                                         |
-| KC_LOGS_EVENTS_PERIOD   | How long should event logs stay in the system?                                    | 365                                             | Integer value                                              |
-| KC_LOGS_EVENTS_STRATEGY | What should be done once event logs surpass the amount of retention days?         | none                                            | none / delete / s3                                         |
-| AWS_REGION              | What region would you like SES and S3 to function in?                             | none                                            | String value representing AWS region. London is: eu-west-2 |
-| AWS_ACCESS_KEY_ID       | The AWS access key for your account. Requires permissions for AWS SES and AWS S3. | none                                            | String                                                     |
-| AWS_SECRET_KEY          | The AWS secret key for your account. Requires permissions for AWS SES and AWS S3. | none                                            | String                                                     |
-| AWS_S3_BUCKET           | The bucket name to store archived logs.                                           | keycutter                                       | String                                                     |
-| PG_HOST                 | The Postgres database url                                                         | localhost                                       | String                                                     |
-| PG_PORT                 | The Postgres database port                                                        | 5432                                            | Integer                                                    |
-| PG_DATABASE             | The Postgres database db name.                                                    | keycutter                                       | String                                                     |
-| PG_USERNAME             | The Postgres database username                                                    | postgres                                        | String                                                     |
-| PG_PASSWORD             | The Postgres database password                                                    | SECURE_PASSWORD                                 | String                                                     |
-| JWT_TOKEN_SECRET        | The signing secret for JSON web tokens.                                           | SUPER_SECURE_PASSWORD_THAT_WILL_NEVER_BE_HACKED | String - String value of at-least 256 bits                 |
-| JWT_TOKEN_EXPIRATION    | How long should the JWT be valid once a user logs in?                             | 86400                                           | Integer value representing seconds                         |
+| Key                     | Description                                                                       | Default Value                  | Options                                                    |
+|-------------------------|-----------------------------------------------------------------------------------|--------------------------------|------------------------------------------------------------|
+| KC_PORT                 | The service port                                                                  | 7314                           | Integer                                                    |
+| KC_ENV                  | The environment of the system.                                                    | local                          | local / prod                                               |
+| KC_EMAIL_PROVIDER       | The email provider.                                                               | none                           | none / ses                                                 |
+| KC_EMAIL_SENDER         | The email address that will be used when sending emails.                          | none                           | Email address                                              |
+| KC_UI_ADMIN_USERNAME    | The username to login to the admin dashboard                                      | operations                     | String                                                     |
+| KC_UI_ADMIN_PASSWORD    | The password to login to the admin dashboard                                      | operations                     | String                                                     |
+| KC_LOGS_LOGIN_PERIOD    | How long should login logs stay in the system?                                    | 365                            | Integer value                                              |
+| KC_LOGS_LOGIN_STRATEGY  | What should be done once login logs surpass the amount of retention days?         | none                           | none / delete / s3                                         |
+| KC_LOGS_EVENTS_PERIOD   | How long should event logs stay in the system?                                    | 365                            | Integer value                                              |
+| KC_LOGS_EVENTS_STRATEGY | What should be done once event logs surpass the amount of retention days?         | none                           | none / delete / s3                                         |
+| AWS_REGION              | What region would you like SES and S3 to function in?                             | none                           | String value representing AWS region. London is: eu-west-2 |
+| AWS_ACCESS_KEY_ID       | The AWS access key for your account. Requires permissions for AWS SES and AWS S3. | none                           | String                                                     |
+| AWS_SECRET_KEY          | The AWS secret key for your account. Requires permissions for AWS SES and AWS S3. | none                           | String                                                     |
+| AWS_S3_BUCKET           | The bucket name to store archived logs.                                           | keycutter                      | String                                                     |
+| PG_HOST                 | The Postgres database url                                                         | localhost                      | String                                                     |
+| PG_PORT                 | The Postgres database port                                                        | 5432                           | Integer                                                    |
+| PG_DATABASE             | The Postgres database db name.                                                    | keycutter                      | String                                                     |
+| PG_USERNAME             | The Postgres database username                                                    | postgres                       | String                                                     |
+| PG_PASSWORD             | The Postgres database password                                                    | SECURE_PASSWORD                | String                                                     |
+| JWT_TOKEN_SECRET        | The signing secret for JSON web tokens.                                           | iiiiiiiiiiiiiiiiiiiiiiiiiiiiii | String - String value of at-least 256 bits                 |
+| JWT_TOKEN_EXPIRATION    | How long should the JWT be valid once a user logs in?                             | 86400                          | Integer value representing seconds                         |
 
 ### KC_ENV:
 
