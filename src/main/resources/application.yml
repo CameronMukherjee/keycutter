@@ -52,9 +52,8 @@ aws:
   secretKey: ${AWS_SECRET_KEY}
   bucket: ${AWS_S3_BUCKET:keycutter}
 kc:
-  env: ${KC_ENV:local}
   email:
-    provider: ${KC_EMAIL_PROVIDER:none}
+    provider: ${KC_EMAIL_PROVIDER}
     sender: ${KC_EMAIL_SENDER}
   ui:
     username: ${KC_UI_ADMIN_USERNAME:operations}
@@ -62,7 +61,9 @@ kc:
   logs:
     login:
       period: ${KC_LOGS_LOGIN_PERIOD:365}
-      strategy: ${KC_LOGS_LOGIN_STRATEGY:none}
+      strategy: ${KC_LOGS_LOGIN_STRATEGY}
     events:
       period: ${KC_LOGS_EVENTS_PERIOD:365}
-      strategy: ${KC_LOGS_EVENTS_STRATEGY:none}
+      strategy: ${KC_LOGS_EVENTS_STRATEGY}
+  webhook:
+    emit: ${KC_WEBHOOK_EMIT:true}
