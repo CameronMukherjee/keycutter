@@ -1,15 +1,19 @@
 # What is KeyCutter?
 
-Key cutter is a side-car deployable authentication service. It works in conjunction with your pre-existing services.
-KeyCutter dispatches RBAC enabled JSON web tokens, allowing you to focus on developing features and not authentication.
+Key cutter is a side-car deployable authentication service. It works in conjunction with your
+pre-existing services.
+KeyCutter dispatches RBAC enabled JSON web tokens, allowing you to focus on developing features and
+not authentication.
 
 # Key Features:
 
 - System and user management via UI - coming soon.
+- Included analytics dashboard
 - Email triggers for new users and password resets, email templates are customisable.
 - Web-hook triggers for events.
 - Retention periods for logs including deleting or archiving to AWS S3.
-- Interface via REST ([https://hexploits.stoplight.io](https://hexploits.stoplight.io/docs/KeyCutter/)) or native
+- Interface via
+  REST ([https://hexploits.stoplight.io](https://hexploits.stoplight.io/docs/KeyCutter/)) or native
   bindings (Java, C#, Go and Typescript) - coming soon.
 
 # Getting Started:
@@ -17,7 +21,8 @@ KeyCutter dispatches RBAC enabled JSON web tokens, allowing you to focus on deve
 **Docker container is available
 at: [https://hub.docker.com/r/hexploits/keycutter](https://hub.docker.com/r/hexploits/keycutter)**
 
-The easiest way to get started with KeyCutter would be utilising Docker to run the container image. This can be done in
+The easiest way to get started with KeyCutter would be utilising Docker to run the container image.
+This can be done in
 a standalone environment or via docker-compose (which is what we recommend).
 
 ### **Standalone Container Example:**
@@ -102,7 +107,8 @@ networks:
     driver: bridge
 ```
 
-To start using KeyCutter, include your service in the compose file and ensure they’re on the same network. In this case
+To start using KeyCutter, include your service in the compose file and ensure they’re on the same
+network. In this case
 the network is called ‘keycutter-network’.
 
 # Getting the most out of KeyCutter:
@@ -111,10 +117,13 @@ If you’re trying to get the most out of key cutter we really advise you do the
 
 ### Email - AWS SES Integration:
 
-1. Create an IAM user with programmatic access via AWS and provide the access key and secret access key to the
+1. Create an IAM user with programmatic access via AWS and provide the access key and secret access
+   key to the
    configuration. Ensure this key has policies for AWS SES.
-2. Ensure you have a valid email connected to AWS SES - might require clicking on a URL in your inbox.
-3. Ensure your AWS SES instance is in a production environment and not sandbox (might require filling out a form on the
+2. Ensure you have a valid email connected to AWS SES - might require clicking on a URL in your
+   inbox.
+3. Ensure your AWS SES instance is in a production environment and not sandbox (might require
+   filling out a form on the
    AWS SES dashboard).
 4. An example of the environment variables you would want to pass into the system could be:
     1. AWS_REGION=eu-west-2
@@ -125,9 +134,11 @@ If you’re trying to get the most out of key cutter we really advise you do the
 
 ### Log Retention - AWS S3 Integration:
 
-1. Create an IAM user with programmatic access via AWS and provide the access key and secret access key to the
+1. Create an IAM user with programmatic access via AWS and provide the access key and secret access
+   key to the
    configuration. Ensure this key has policies for AWS S3.
-2. Ensure you have created a bucket for KeyCutter to store logs in, KeyCutter expects this to be ‘keycutter’ by default
+2. Ensure you have created a bucket for KeyCutter to store logs in, KeyCutter expects this to be
+   ‘keycutter’ by default
    however this can be changed via the environment variables.
 3. An example of the environment variables you would want to pass into the system could be:
     1. AWS_REGION=eu-west-2
@@ -139,9 +150,12 @@ If you’re trying to get the most out of key cutter we really advise you do the
     7. KC_LOGS_LOGIN_PERIOD=30
     8. KC_LOGS_LOGIN_STRATEGY=s3
 
-In this example you can see that for both event logs and login logs we want to archive them to S3 after 30 days, as you
-can see these can be independently adjusted for your need. If you would like to keep them within the system replace ‘s3’
-with ‘none’, if you would like to delete them instead simply replace 's3’ with ‘delete’. More documentation about this
+In this example you can see that for both event logs and login logs we want to archive them to S3
+after 30 days, as you
+can see these can be independently adjusted for your need. If you would like to keep them within the
+system replace ‘s3’
+with ‘none’, if you would like to delete them instead simply replace 's3’ with ‘delete’. More
+documentation about this
 feature can be found near the bottom of this doc.
 
 # KeyCutter Environment Variables:
@@ -187,5 +201,6 @@ feature can be found near the bottom of this doc.
 
 ### KC_EMAIL_SENDER:
 
-If KC_EMAIL_PROVIDER has been set ensure the email address provided here is set up correctly with the provider. If the
+If KC_EMAIL_PROVIDER has been set ensure the email address provided here is set up correctly with
+the provider. If the
 email is not authorised errors will occur at runtime.
