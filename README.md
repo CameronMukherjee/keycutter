@@ -8,10 +8,9 @@ not authentication.
 # Key Features:
 
 - System and user management via UI - coming soon.
-- Included analytics dashboard
 - Email triggers for new users and password resets, email templates are customisable.
-- Web-hook triggers for events.
-- Retention periods for logs including deleting or archiving to AWS S3.
+- Flexible web-hook triggers for events.
+- Retention periods for logs including archiving to AWS S3 or deletion.
 - Interface via
   REST ([https://hexploits.stoplight.io](https://hexploits.stoplight.io/docs/KeyCutter/)) or native
   bindings (Java, C#, Go and Typescript) - coming soon.
@@ -22,8 +21,8 @@ not authentication.
 at: [https://hub.docker.com/r/hexploits/keycutter](https://hub.docker.com/r/hexploits/keycutter)**
 
 The easiest way to get started with KeyCutter would be utilising Docker to run the container image.
-This can be done in
-a standalone environment or via docker-compose (which is what we recommend).
+This can be done via running our container via your CLI or via docker-compose (which is what we
+recommend).
 
 ### **Standalone Container Example:**
 
