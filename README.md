@@ -20,9 +20,11 @@ not authentication.
 **Docker container is available
 at: [https://hub.docker.com/r/hexploits/keycutter](https://hub.docker.com/r/hexploits/keycutter)**
 
-The easiest way to get started with KeyCutter would be utilising Docker to run the container image.
-This can be done via running our container via your CLI or via docker-compose (which is what we
-recommend).
+The easiest way to get started with KeyCutter would be utilising Docker to run the container image
+alongside a Postgres database.
+This can be done via running our container via your CLI (will require a Postgres instance to be
+available)
+or via docker-compose (which is what we recommend).
 
 ### **Standalone Container Example:**
 
