@@ -1,5 +1,10 @@
 micronaut:
+  data:
+    pageable:
+      max-page-size: 500
   server:
+    cors:
+      enabled: true
     port: ${KC_PORT:7314}
   application:
     name: keycutter
