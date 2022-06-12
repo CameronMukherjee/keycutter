@@ -72,3 +72,9 @@ kc:
       strategy: ${KC_LOGS_EVENTS_STRATEGY:delete}
   webhook:
     emit: ${KC_WEBHOOK_EMIT:true}
+  kafka:
+    enabled: ${KC_KAFKA_ENABLED:false}
+kafka:
+  enabled: ${KC_KAFKA_ENABLED:false}
+  bootstrap:
+    servers: PLAINTEXT://localhost:29092

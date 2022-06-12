@@ -1,49 +1,51 @@
-version: "3.9"
+version: '2'
 services:
-  keycutter:
-    restart: always
-    image: "hexploits/keycutter"
-    networks:
-      - keycutter-network
+  zookeeper-1:
+    image: confluentinc/cp-zookeeper:latest
+    platform: linux/amd64
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - "7314:7314"
+      - 22181:2181
+
+  zookeeper-2:
+    image: confluentinc/cp-zookeeper:latest
+    platform: linux/amd64
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 32181:2181
+
+  kafka-1:
+    image: confluentinc/cp-kafka:latest
+    platform: linux/amd64
     depends_on:
-      - database
-    environment:
-      - KC_PORT=7314
-      - KC_ENV=prod
-      - KC_EMAIL_PROVIDER=ses
-      - KC_EMAIL_SENDER=info@hexploits.com
-      - KC_UI_ADMIN_USERNAME=operations
-      - KC_UI_ADMIN_PASSWORD=operations
-      - KC_LOGS_LOGIN_PERIOD=365
-      - KC_LOGS_LOGIN_STRATEGY=delete
-      - KC_LOGS_EVENTS_PERIOD=365
-      - KC_LOGS_EVENTS=STRATEGY=delete
-      - AWS_REGION=eu-west-2
-      - AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
-      - AWS_SECRET_KEY=YOUR_SECRET
-      - AWS_S3_BUCKET=keycutter
-      - PG_HOST=database
-      - PG_PORT=5432
-      - PG_DATABASE=keycutter
-      - PG_USERNAME=keycutter
-      - PG_PASSWORD=SECURE_PASSWORD
-      - JWT_TOKEN_SECRET=YOUR_SECURE_SECRET
-      - JWT_TOKEN_EXPIRATION=86400
+      - zookeeper-1
+      - zookeeper-2
 
-  database:
-    restart: always
-    image: "postgres"
-    networks:
-      - keycutter-network
     ports:
-      - "5432:5432"
+      - 29092:29092
     environment:
-      - POSTGRES_USER=keycutter
-      - POSTGRES_DB=keycutter
-      - POSTGRES_PASSWORD=SECURE_PASSWORD
-
-networks:
-  keycutter-network:
-    driver: bridge
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  kafka-2:
+    image: confluentinc/cp-kafka:latest
+    platform: linux/amd64
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+    ports:
+      - 39092:39092
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:9092,PLAINTEXT_HOST://localhost:39092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
