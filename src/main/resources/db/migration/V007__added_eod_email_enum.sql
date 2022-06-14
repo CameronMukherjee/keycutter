@@ -1,0 +1,1 @@
+ALTER type event_type ADD VALUE 'END_OF_DAY_EMAIL_SENT';
