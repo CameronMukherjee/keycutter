@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS kc_retention_processing_log
 );
 
 CREATE VIEW retention_entity_count AS
-SELECT log_type, strategy, sum(entities_processed)
+SELECT log_type, strategy, sum(entities_processed) as entities_processed
 FROM kc_retention_processing_log
 GROUP BY log_type, strategy;
